@@ -1,0 +1,5 @@
+[user]
+    name = Shangway Hsu
+        email = shangway.hsu@gmail.com
+[alias]
+    tree = log --pretty=format:'\t%C(red)%ad %C(magenta)%ar\t%C(cyan)%an\t%Cgreen%d %Creset%s %C(blue)| %C(cyan)%H' --date=short --graph 

@@ -1,0 +1,6 @@
+#set editing-mode vi
+#set keymap vi-command
+#set keymap vi-insert
+#"p": self-insert
+TAB: menu-complete
+set show-all-if-ambiguous on
