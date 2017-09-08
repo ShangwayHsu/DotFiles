@@ -44,6 +44,12 @@ call plug#begin('~/.vim/plugged')
 "Plug 'pangloss/vim-javascript'
 call plug#end()
 
+"CtrlP fuzy search
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 " *****************************************************************
 " *                       VARIABLES                               *
 " *****************************************************************
@@ -73,6 +79,9 @@ set lazyredraw
 highlight CursorLineNR ctermfg=white
 set ttyfast
 
+"FZF
+set rtp+=/usr/local/opt/fzf
+
 " *********************************************************************
 " *                             THEME                                 *
 " *********************************************************************
@@ -90,17 +99,11 @@ let g:indentLine_char = '⎸'
 "let g:indentLine_char = '┆'
 let g:indentLine_color_term = 236
 
-"FZF
-set rtp+=/usr/local/opt/fzf
-
 " Enable arrow keys                    
 imap ^[OA <ESC>ki                                    
 imap ^[OB <ESC>ji                   
 imap ^{OC <ESC>li
 imap ^[OD <ESC>hi
-
-" Shows colors of syntax
-"syntax on                          
 
 " Autocomplete paranthesis stuff
 inoremap [  []<Esc>i
@@ -140,12 +143,12 @@ highlight Visual ctermfg=darkblue ctermbg=grey
   
 " Highlight color of Matching paranthesis 
 highlight MatchParen term=underline cterm=underline gui=underline
-"highlight MatchParen cterm=underline ctermfg=white ctermbg=green
 
 "--------------AIR LINE----------------
 "let &t_Co=256
 set laststatus=2
 set ttimeoutlen=50
+
 "set encoding=utf-8
 let g:airline_powerline_fonts = 2
 let g:Powerline_mode_V="V·LINE"
@@ -153,7 +156,6 @@ let g:Powerline_mode_cv="V·BLOCK"
 let g:Powerline_mode_S="S·LINE"
 let g:Powerline_mode_cs="S·BLOCK"
 let g:airline_powerline_fonts = 1
-"set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h20
 let g:Powerline_symbols = 'fancy'
 let g:airline_theme = 'solarized'
 
@@ -210,5 +212,4 @@ iab testerclass
 \public static void main(String[] args<RIGHT><CR>
 \{<CR>
 
-filetype plugin indent on    " required
-highlight MatchParen term=underline cterm=underline gui=underline
+filetype plugin indent on
