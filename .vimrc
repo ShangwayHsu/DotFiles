@@ -27,14 +27,22 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 
 "javascript 
-Plugin 'pangloss/vim-javascript'
+"Plugin 'pangloss/vim-javascript'
 
 "javascript syntax highlight
 Plugin 'jelera/vim-javascript-syntax'
 
+"Git diff 
+Plugin 'airblade/vim-gitgutter'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+call plug#begin('~/.vim/plugged')
+
+"Plug 'pangloss/vim-javascript'
+call plug#end()
 
 " *****************************************************************
 " *                       VARIABLES                               *
@@ -52,7 +60,7 @@ set fileformats=unix,dos,mac    " open files from mac/dos
 set exrc                        " open local config files
 set nojoinspaces                " don't add white space when I don't tell 
 set ruler                       " which line am I on?
-set showmatch                   " ensure Dyck language
+"set showmatch                   " ensure Dyck language
 set incsearch                   " incremental searching
 set nohlsearch                  " meh
 set bs=2                        " fix backspacing in insert mode
@@ -61,22 +69,26 @@ set formatoptions+=r            " auto add askerus for comments
 "set mouse=a
 set clipboard=unnamed
 set relativenumber
-"set lazyredraw
+set lazyredraw
 highlight CursorLineNR ctermfg=white
 set ttyfast
 
-" Javascript node js stuff
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-"set foldmethod=syntax
+" *********************************************************************
+" *                             THEME                                 *
+" *********************************************************************
+let &t_Co=16
+set background=dark
+syntax enable
+colorscheme solarized
+let g:solarized_termcolors=16
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
 
 " Indentation Guide
 let g:indentLine_char = '⎸'
 "let g:indentLine_char = '│'
 "let g:indentLine_char = '┆'
 let g:indentLine_color_term = 236
-
 
 "FZF
 set rtp+=/usr/local/opt/fzf
@@ -88,7 +100,7 @@ imap ^{OC <ESC>li
 imap ^[OD <ESC>hi
 
 " Shows colors of syntax
-syntax on                          
+"syntax on                          
 
 " Autocomplete paranthesis stuff
 inoremap [  []<Esc>i
@@ -106,11 +118,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-"theming
-let &t_Co=256
-set background=dark
-let g:solarized_termcolors=16
-
 "set linenumber and line number on active buffer
 augroup BgHighlight
     autocmd!
@@ -125,20 +132,18 @@ highlight LineNr  ctermbg=black
 set colorcolumn=80 
 highlight ColorColumn ctermbg=black
 
-"highlight OverLength ctermbg=lightyellow ctermfg=grey guibg=lightyellow
-"match OverLength /\%81v.\+/
-
 " Highlight current line color
 highlight CursorLine   cterm=NONE ctermbg=black 
-"hi CursorLineNr   term=bold ctermfg=yellow gui=bold guifg=yellow
 
 " Highlight color of VISUAL mode
-highlight Visual  ctermfg=grey ctermbg=darkblue
+highlight Visual ctermfg=darkblue ctermbg=grey
   
 " Highlight color of Matching paranthesis 
-highlight MatchParen cterm=underline ctermbg=none ctermfg=lightmagenta
+highlight MatchParen term=underline cterm=underline gui=underline
+"highlight MatchParen cterm=underline ctermfg=white ctermbg=green
 
 "--------------AIR LINE----------------
+"let &t_Co=256
 set laststatus=2
 set ttimeoutlen=50
 "set encoding=utf-8
@@ -147,10 +152,9 @@ let g:Powerline_mode_V="V·LINE"
 let g:Powerline_mode_cv="V·BLOCK"
 let g:Powerline_mode_S="S·LINE"
 let g:Powerline_mode_cs="S·BLOCK"
-"let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h20
-"let g:Powerline_symbols = 'fancy'
+"set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h20
+let g:Powerline_symbols = 'fancy'
 let g:airline_theme = 'solarized'
 
 
@@ -206,6 +210,5 @@ iab testerclass
 \public static void main(String[] args<RIGHT><CR>
 \{<CR>
 
-filetype off                  " required
-syntax on
-
+filetype plugin indent on    " required
+highlight MatchParen term=underline cterm=underline gui=underline
